@@ -1,0 +1,21 @@
+services:
+  db:
+    image: mysql
+    restart: always
+    ports:
+      - "6000:3306"
+    environment:
+      - MYSQL_DATABASE=c2s_technical_challenge_web_scraping_data
+      - MYSQL_ROOT_PASSWORD=root
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bundle exec rails s -p 7000 -b '0.0.0.0'
+    volumes:
+      - ./:/rails
+    ports:
+      - "7000:7000"
+    depends_on:
+      - db
