@@ -1,0 +1,2 @@
+class DataScraping < ApplicationRecord
+end
