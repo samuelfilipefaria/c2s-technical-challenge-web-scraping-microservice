@@ -15,7 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: "root"
-  host: <%= ENV.fetch("DB_HOST") { "db" } %>
+  host: <%= ENV.fetch("DB_HOST") { "web_scraping_microservice_db" } %>
 
 development:
   <<: *default
