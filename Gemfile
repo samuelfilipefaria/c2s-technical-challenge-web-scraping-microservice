@@ -41,3 +41,7 @@ group :development, :test do
 end
 
 
+
+gem "httparty", "~> 0.22.0"
+
+gem "rspec-rails", "~> 7.0"
