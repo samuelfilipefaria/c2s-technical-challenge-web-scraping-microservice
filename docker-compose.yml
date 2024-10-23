@@ -1,5 +1,5 @@
 services:
-  db:
+  web_scraping_microservice_db:
     image: mysql
     restart: always
     ports:
@@ -7,8 +7,10 @@ services:
     environment:
       - MYSQL_DATABASE=c2s_technical_challenge_web_scraping_data
       - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - c2s-technical-challenge-main-task-system_main-task-system-network
 
-  api:
+  web_scraping_microservice_api:
     build:
       context: .
       dockerfile: Dockerfile
@@ -18,4 +20,10 @@ services:
     ports:
       - "7000:7000"
     depends_on:
-      - db
+      - web_scraping_microservice_db
+    networks:
+      - c2s-technical-challenge-main-task-system_main-task-system-network
+
+networks:
+  c2s-technical-challenge-main-task-system_main-task-system-network:
+    external: true
