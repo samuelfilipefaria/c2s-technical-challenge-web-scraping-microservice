@@ -22,6 +22,12 @@ Este comando irá criar a imagem baseado no código fonte e com essa imagem irá
 
 Da próxima vez que for rodar basta iniciar o container, não precisará o construir (a menos que tenha acontecido alguma mudança em relação as dependências no projeto, mas isto é apenas para fins de desenvolvimento).
 
+## Para executar a suite de testes basta rodar o seguinte comando no diretório raiz do projeto
+
+```
+rspec spec/
+```
+
 # Documentação da API
 
 | Verb | Route                   | Parameters                 |
