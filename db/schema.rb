@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_23_143753) do
-  create_table "data_scrapings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "task_id"
-    t.string "url_for_scraping"
-    t.string "scraped_data"
+ActiveRecord::Schema[7.2].define(version: 2024_10_30_011817) do
+  create_table "web_motors_scraped_data", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "brand"
+    t.string "model"
+    t.float "price"
+    t.integer "web_scraping_task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

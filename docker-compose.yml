@@ -10,6 +10,43 @@ services:
     networks:
       - c2s-technical-challenge-main-task-system_main-task-system-network
 
+  web_scraping_microservice_db_test:
+    image: mysql
+    restart: always
+    ports:
+      - "10000:3306"
+    environment:
+      - MYSQL_DATABASE=c2s_technical_challenge_web_scraping_data_test
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - c2s-technical-challenge-main-task-system_main-task-system-network
+
+  redis:
+    image: redis:6-alpine
+    container_name: redis
+    command: redis-server
+    ports:
+      - '11000:6379'
+    volumes:
+      - redis_data:/data
+    networks:
+      - c2s-technical-challenge-main-task-system_main-task-system-network
+
+  sidekiq:
+    container_name: sidekiq
+    build: .
+    shm_size: '3gb'
+    command: bundle exec sidekiq
+    volumes:
+      - ./:/rails
+    depends_on:
+      - redis
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      - c2s-technical-challenge-main-task-system_main-task-system-network
+
   web_scraping_microservice_api:
     build:
       context: .
@@ -21,8 +58,15 @@ services:
       - "7000:7000"
     depends_on:
       - web_scraping_microservice_db
+      - web_scraping_microservice_db_test
+      - sidekiq
+    env_file:
+      - .env
     networks:
       - c2s-technical-challenge-main-task-system_main-task-system-network
+
+volumes:
+  redis_data:
 
 networks:
   c2s-technical-challenge-main-task-system_main-task-system-network:

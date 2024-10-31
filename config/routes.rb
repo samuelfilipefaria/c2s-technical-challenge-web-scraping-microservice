@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "scraped_data#api_message"
-  post "/scrape_data", to: "scraped_data#scrape_data"
+  post "web_scraping/web_motors", to: "web_scraping#web_motors"
 end

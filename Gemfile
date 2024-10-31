@@ -40,8 +40,14 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 end
 
-
+gem "rspec-rails", "~> 7.0"
 
 gem "httparty", "~> 0.22.0"
 
-gem "rspec-rails", "~> 7.0"
+gem "headless", "~> 2.3"
+
+gem "watir", "~> 7.3"
+
+gem "nokogiri", "~> 1.16"
+
+gem "sidekiq", "~> 7.3"

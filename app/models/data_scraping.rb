@@ -1,2 +1,0 @@
-class DataScraping < ApplicationRecord
-end
