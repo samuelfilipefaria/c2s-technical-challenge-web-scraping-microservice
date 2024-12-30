@@ -48,6 +48,6 @@ gem "headless", "~> 2.3"
 
 gem "watir", "~> 7.3"
 
-gem "nokogiri", "~> 1.16"
+gem "nokogiri", "~> 1.18"
 
 gem "sidekiq", "~> 7.3"
